@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-use Inertia\Inertia;
 use App\Services\KanyeApiService;
 
 class QuoteController extends Controller
 {
     public function index() {
         $api = new KanyeApiService;
-        $quotes = $api->getQuotes();
-        
-        return Inertia::render('Quotes', [
-            'quotes' => $quotes
-        ]);
+        $response = $api->getQuotes();
+
+        return $response;
     }
 }
